@@ -1,29 +1,81 @@
-# README #
+## Hyperledger Fabric Balance Transfer using docker Swarm (2 machines)
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+#### Example details of PC1 and PC2
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* PC1
+```
+hostname: host1
+IP: 192.168.0.50
+```
 
-### How do I get set up? ###
+* PC2
+```
+hostname: host2
+IP: 192.168.0.60
+```
+#### STEPS TO RUN APPLICATION
+** To find hostname run the following command:
+```
+hostname
+```
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
+modify ./org1/ca.yaml , ./org1/orderer.yaml, ./org1/peer0.yaml , ./org1/peer1.yaml with hostname of PC1
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
+modify ./org2/ca.yaml , ./org2/peer0.yaml , ./org2/peer1.yaml with hostname of PC2
 
-* Repo owner or admin
-* Other community or team contact
+
+modify ./artifacts/network-config.yaml file with corresponding IP adsress of PC1 and PC2
+
+
+
+##### STEP 1
+* Terminal PC1
+```
+docker swarm init
+```
+
+```
+docker swarm join-token manager
+```
+[copy and paste token in PC2 Terminal]
+
+##### STEP 2
+* Terminal PC2
+[copy and paste token in PC2 Terminal]
+
+
+##### STEP 3
+* Terminal PC1
+```
+./createNetwork.sh
+```
+
+```
+cd org1
+```
+
+```
+./deploy.sh
+```
+
+##### STEP 4
+* Terminal PC2
+```
+cd org2
+```
+
+```
+./deploy.sh
+```
+
+##### STEP 5
+* Terminal PC1
+```
+npm install
+```
+```
+node app
+```
