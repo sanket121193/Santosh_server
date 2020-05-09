@@ -17,7 +17,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == snapper
+                    - node.hostname == snapper-cloud
         image: hyperledger/fabric-peer
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
         command: peer node start

@@ -17,7 +17,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == snapper
+                    - node.hostname == snapper-cloud
         image: hyperledger/fabric-peer
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
         command: peer node start
@@ -32,7 +32,7 @@ services:
             - CORE_PEER_PROFILE_ENABLED=true
             - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/msp
             #- CORE_LEDGER_STATE_STATEDATABASE=LevelDB
-            - CORE_LOGGING_LEVEL=DEBUG
+            - CORE_LOGGING_LEVEL=ERROR
             - CORE_LOGGING_GOSSIP=${CORE_LOGGING_GOSSIP}
             - CORE_LOGGING_MSP=DEBUG
             # - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/msp
@@ -44,8 +44,8 @@ services:
             - CORE_PEER_TLS_ROOTCERT_FILE=/var/hyperledger/tls/ca.crt
             - CORE_PEER_CHAINCODELISTENADDRESS=peer2.org1.example.com:7052
             - CORE_PEER_ID=peer2.org1.example.com
-            - CORE_PEER_ADDRESS=peer2.org1.example.com:9051
-            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org1.example.com:9051
+            - CORE_PEER_ADDRESS=peer2.org1.example.com:7058
+            - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org1.example.com:7058
             - CORE_PEER_LOCALMSPID=Org1MSP
         volumes:
             - /var/run/:/host/var/run/
@@ -54,8 +54,7 @@ services:
             - ../artifacts/channel/crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
             - ../artifacts/:/var/hyperledger/config
         ports:
-            - 9051:7051
-            - 9058:7053
+            - 7058:7051
         networks:
           my-net:
             aliases:

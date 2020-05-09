@@ -18,19 +18,19 @@ OrdererOrgs:
     Specs:
       - Hostname: orderer
         SANS:
-          - "140.238.72.240"
+          - "159.69.193.142"
       - Hostname: orderer2
         SANS:
-          - "140.238.72.240"
+          - "159.69.193.142"
       - Hostname: orderer3
         SANS:
-          - "140.238.72.240"
+          - "159.69.193.142"
       - Hostname: orderer4
         SANS:
-          - "140.238.72.240"
+          - "159.69.193.142"
       - Hostname: orderer5
         SANS:
-          - "78.46.164.184"
+          - "159.69.193.142"
 
 # ---------------------------------------------------------------------------
 # "PeerOrgs" - Definition of organizations managing peer nodes

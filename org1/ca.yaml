@@ -21,17 +21,17 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == snapper
+                    - node.hostname == snapper-cloud
         image: hyperledger/fabric-ca
         hostname: ca.org1.example.com
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=ca_org1
             - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-            - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f6374b97c7ab913dc819e2c5eb813259e49aacf7a6d1d99e295fc2150c76e80f_sk
+            - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ed33229dd6e02014942443663de65b2728a3acf329af6a9ae8947b47314d8bfe_sk
             - FABRIC_CA_SERVER_TLS_ENABLED=true
             - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-            - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f6374b97c7ab913dc819e2c5eb813259e49aacf7a6d1d99e295fc2150c76e80f_sk
+            - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ed33229dd6e02014942443663de65b2728a3acf329af6a9ae8947b47314d8bfe_sk
         ports:
             - "7054:7054"   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'

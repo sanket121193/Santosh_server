@@ -15,3 +15,8 @@ docker stack deploy -c peer1.yaml peer1_org1
 docker stack deploy -c peer2.yaml peer2_org1
 
 docker stack deploy -c peer3.yaml peer3_org1
+
+
+
+
+
